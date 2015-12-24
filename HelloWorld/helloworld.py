@@ -12,3 +12,5 @@ print("Content-type:text/html\r\n\r\n")
 print("Environment")
 for param in os.environ.keys():
 	print ("<b>%20s</b>:%s</br>" ,param,os.environ[param])
+add = lambda x,y: x*2 +y
+print("x*2+y=",add(10,14))
