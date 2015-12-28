@@ -1,7 +1,7 @@
 import urllib.request
 
 class Stock:
-	"""docstring for Stock"""
+	"Stock,股票数据分析，来自sina财经"
 	__name = ""
 	__code = ""
 	__price= 0
@@ -13,8 +13,8 @@ class Stock:
 		self.__code = code
 		self.__price= dataList[3]
 
-	def show(self):
-		print(self.__code+":"+self.__name+",当前价格："+self.__price)
+	def __str__(self):
+		return (self.__code+":"+self.__name+",当前价："+self.__price)
 
 class StockDao:
 	"""docstring for StockDao"""
@@ -31,12 +31,10 @@ class StockDao:
 		values = tmp[1].replace('"','').replace(";",'').split(",")
 		stock = Stock(code, values)
 		return stock
-
-dao = StockDao()
-code = 'sz000503'
-stock = dao.getStock(code)
-stock.show()
-
+def readStock(code):
+	dao = StockDao()
+	stock = dao.getStock(code)
+	return stock
 #print(resp.geturl())
 #print(resp.info())
 
