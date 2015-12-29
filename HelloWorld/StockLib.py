@@ -12,7 +12,7 @@ class Stock:
 		self.__name = dataList[0]
 		self.__code = code
 		self.__price= dataList[3]
-
+		self.__start= dataList[1]
 	def __str__(self):
 		return (self.__code+":"+self.__name+",当前价："+self.__price)
 
@@ -35,6 +35,5 @@ def readStock(code):
 	dao = StockDao()
 	stock = dao.getStock(code)
 	return stock
-#print(resp.geturl())
-#print(resp.info())
+
 
