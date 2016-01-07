@@ -2,16 +2,15 @@
 import os,sys
 import math
 import urllib.request
-import stocklib
+import StockLib
+
+#读取海虹股票
+code = 'sz000503'
+stock = StockLib.readStock(code)
+print(str(stock))
 
 # base = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F]
 base = [str(x) for x in range(10)] + [ chr(x) for x in range(ord('A'),ord('A')+6)]
-
-code = 'sz000503'
-stock = stocklib.readStock(code)
-print(str(stock))
-
-
 
 # dec2bin
 # 十进制 to 二进制: bin()
@@ -43,25 +42,27 @@ def dec2hex(string_num):
         mid.append(base[rem])
 
     return ''.join([str(x) for x in mid[::-1]])
+def showChinese():
+	meNum = str(ord("一"))
+	print(meNum)
+	print(dec2bin(meNum))
+	print(dec2hex(meNum))
+	print(chr(25105))
 
-meNum = str(ord("一"))
-print(meNum)
-print(dec2bin(meNum))
-print(dec2hex(meNum))
-print(chr(25105))
-
-hnum = [123,78]
-lnum = [89,90]
-for h in range(0,256) :
-
-	for m in range(0,16):
-		row = ""
-		for n in range(0,16):
-			hex_h = dec2hex(str(h))
-			hex_l = dec2hex(str(m*16+n))
-			if m==0 :
-				hex_l = "0"+hex_l
-				#if n==0 : hex_l =  "00"
-			#print(hex_l)
-			row = row + "," + chr(int(hex_h+hex_l,16))
-		print(dec2hex(str(h))+dec2hex(str(m*16+0))+":"+row)
+	for h in range(78,256) :
+		for m in range(0,16):
+			row = ""
+			for n in range(0,16):
+				hex_h = dec2hex(str(h))
+				hex_l = dec2hex(str(m*16+n))
+				if m==0 :
+					hex_l = "0"+hex_l
+					if n==0 : hex_l =  "00"
+				#print(hex_l)
+				row = row + "," + chr(int(hex_h+hex_l,16))
+			try:
+				print(dec2hex(str(h))+dec2hex(str(m*16+0))+":"+row)
+			except UnicodeEncodeError:
+				print(dec2hex(str(h))+dec2hex(str(m*16+0))+":"+"Except")
+#显示汉字
+showChinese()
