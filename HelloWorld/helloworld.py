@@ -2,12 +2,8 @@
 import os,sys
 import math
 import urllib.request
-import StockLib
+import stocklib
 
-#读取海虹股票
-code = 'sz000503'
-stock = StockLib.readStock(code)
-print(str(stock))
 
 # base = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F]
 base = [str(x) for x in range(10)] + [ chr(x) for x in range(ord('A'),ord('A')+6)]
@@ -65,4 +61,4 @@ def showChinese():
 			except UnicodeEncodeError:
 				print(dec2hex(str(h))+dec2hex(str(m*16+0))+":"+"Except")
 #显示汉字
-showChinese()
+#showChinese()

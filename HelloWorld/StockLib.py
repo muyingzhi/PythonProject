@@ -37,3 +37,9 @@ def readStock(code):
 	return stock
 
 
+#读取海虹股票
+code = 'sz000501'
+stock = readStock(code)
+print(stock)
+
+

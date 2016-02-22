@@ -7,7 +7,7 @@ print(html)
 
 print(resp.geturl())
 print(resp.info())
-return
+
 
 try:
 	res = 2 / 0
